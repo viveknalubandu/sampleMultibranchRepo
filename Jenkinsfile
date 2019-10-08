@@ -30,11 +30,7 @@ pipeline {
                 }
             }     
         }
-       post {
-              always {
-              junit '**/target/surefire-reports/*.xml' 
-              }
-        }
+      
       }
 
       stage("test-1") {
@@ -54,7 +50,7 @@ pipeline {
                steps{
                  snDevOpsStep ()
                  echo "deploy in UAT"
-              }
+               }
              }
             stage('deploy PROD') {
                when {
@@ -69,6 +65,11 @@ pipeline {
         }
       }
     }
+    post {
+              always {
+              junit '**/target/surefire-reports/*.xml' 
+              }
+        }
      
   }
        
