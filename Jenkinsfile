@@ -20,13 +20,7 @@ pipeline {
                         snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
-                }
-                post {
-                  always {
-                  junit '**/target/surefire-reports/*.xml' 
-                  }
-                }
-              
+                }                       
             }
             stage('UAT unit test 2') {
                  steps {
@@ -35,7 +29,12 @@ pipeline {
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest1 test'                     
                 }
             }     
-        }           
+        }
+       post {
+              always {
+              junit '**/target/surefire-reports/*.xml' 
+              }
+        }
       }
 
       stage("test-1") {
