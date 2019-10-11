@@ -14,19 +14,13 @@ pipeline {
        }
        
       stage("test") {
-           parallel {
+           stages {
             stage('UAT unit test1') {
                 steps {
                         snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
-                }
-                post {
-                  always {
-                  junit '**/target/surefire-reports/*.xml' 
-                  }
-                }
-              
+                }                       
             }
             stage('UAT unit test 2') {
                  steps {
@@ -35,7 +29,8 @@ pipeline {
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest1 test'                     
                 }
             }     
-        }           
+        }
+      
       }
 
       stage("test-1") {
@@ -47,24 +42,20 @@ pipeline {
         }
 
        stage("deploy") {
-         stages{
-             stage('deploy UAT') {
-               steps{
+            steps{
                  snDevOpsStep ()
-                 echo "deploy"
-                snDevOpsChange()
-              }
-             }
-            stage('deploy PROD') {
-                steps{
-                  snDevOpsStep ()
-                   echo "deploy"
-                  //snDevOpsChange()              
-                }
+                 echo "deploy "
+                 snDevOpsChange()
             }
-        }
-      }
+                         
+       }
+     
     }
+    post {
+              always {
+              junit '**/target/surefire-reports/*.xml' 
+              }
+        }
      
   }
        
