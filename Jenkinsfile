@@ -14,25 +14,13 @@ pipeline {
        }
        
       stage("test") {
-           stages {
-            stage('UAT unit test1') {
-                steps {
-                        snDevOpsStep ()
-                        echo "Testing"
-                        sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
+              steps {
+                     snDevOpsStep ()
+                      echo "Testing"
+                      sh 'mvn test'
                 }                       
-            }
-            stage('UAT unit test 2') {
-                 steps {
-                         snDevOpsStep ()
-                        echo "Testing"
-                        sh 'mvn -Dtest=com.sndevops.eng.AppTest1 test'                     
-                }
-            }     
-        }
-      
-      }
-
+       }
+           
       stage("test-1") {
                 steps {
                         snDevOpsStep ()
