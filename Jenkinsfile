@@ -14,7 +14,7 @@ pipeline {
        }
        
      stage("test") {
-           parallel {
+           stages {
             stage('UAT unit test1') {
                 steps {
                         snDevOpsStep ()
