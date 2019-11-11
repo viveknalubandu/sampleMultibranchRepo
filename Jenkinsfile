@@ -30,7 +30,7 @@ pipeline {
                 }
             }     
         }
-         post {
+          post {
               always {
               junit '**/target/surefire-reports/*.xml' 
               }
@@ -40,7 +40,7 @@ pipeline {
            
       stage("test-1") {
                 steps {
-                        snDevOpsStep ()
+                        //snDevOpsStep ()
                         echo "Testing"
                        // sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                 }                    
@@ -49,18 +49,12 @@ pipeline {
        stage("deploy") {
          stages{
              stage('deploy UAT') {
-                when{
-                   branch 'dev'
-                }
                steps{
                  snDevOpsStep ()
                  echo "deploy in UAT"
                }
              }
             stage('deploy PROD') {
-               when {
-                  branch 'master'
-               }
                 steps{
                   snDevOpsStep ()
                    echo "deploy in prod"
@@ -71,6 +65,5 @@ pipeline {
       }
      
     }
-   
      
   }
