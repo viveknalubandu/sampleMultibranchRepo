@@ -17,7 +17,7 @@ pipeline {
            stages {
             stage('UAT unit test1') {
                 steps {
-                        snDevOpsStep ()
+                        //snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                 }                       
