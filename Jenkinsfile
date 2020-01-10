@@ -42,6 +42,7 @@ pipeline {
                 steps {
                         //snDevOpsStep ()
                         echo "Testing"
+                        echo "Testing"
                        // sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                 }                    
         }
