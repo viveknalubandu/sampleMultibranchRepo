@@ -76,7 +76,7 @@ pipeline {
                 steps{
                   snDevOpsStep ()
                    echo "deploy in prod"
-			//snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar2","repositoryName": "services-1131","version":"2.126"}]}""")
+			snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar2","repositoryName": "services-1131","version":"${artifactVersion}"}]}""")
                   snDevOpsChange()              
                 }
             }
