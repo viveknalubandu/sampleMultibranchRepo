@@ -35,7 +35,7 @@ pipeline {
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                    sh 'mvn package'
-				//snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar1","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1031"}]}""")
+				snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar2","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1131"}]}""")
 
                 }                       
             }
@@ -76,7 +76,7 @@ pipeline {
                 steps{
                   snDevOpsStep ()
                    echo "deploy in prod"
-			snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar1","repositoryName": "services-1031","version":"2.126"}]}""")
+			//snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar2","repositoryName": "services-1131","version":"2.126"}]}""")
                   snDevOpsChange()              
                 }
             }
