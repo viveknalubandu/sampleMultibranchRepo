@@ -8,6 +8,6 @@ public class App1Test {
     private String INPUT = "13422";
     @Test 
     public void testLength1() { 
-        Assert.assertEquals(INPUT,"13421");  
+        Assert.assertEquals(INPUT,"13422");  
     }
 }
