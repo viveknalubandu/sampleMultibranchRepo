@@ -35,7 +35,7 @@ pipeline {
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                    sh 'mvn package'
-				//snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar2","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1131"}]}""")
+				snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar2","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1131"}]}""")
 
                 }                       
             }
