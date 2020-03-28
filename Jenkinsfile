@@ -20,7 +20,7 @@ pipeline {
    stages {
        stage("build") {
            steps {
-              snDevOpsStep()
+              //snDevOpsStep()
                echo "Building" 
                 sh 'mvn clean install -DskipTests'
                //sleep 5
@@ -31,17 +31,17 @@ pipeline {
            stages {
             stage('UAT unit test1') {
                 steps {
-                        snDevOpsStep ()
+                     //   snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.AppTest test'
                    sh 'mvn package'
-				snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar2","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1131"}]}""")
+				//snDevOpsArtifact(artifactsPayload:"""{"artifacts": [{"name": "sa-web-ui.jar2","version":"${artifactVersion}","semanticVersion": "${artifactSemVersion}","repositoryName": "services-1131"}]}""")
 
                 }                       
             }
             stage('UAT unit test 2') {
                  steps {
-                        snDevOpsStep ()
+                       // snDevOpsStep ()
                         echo "Testing"
                         sh 'mvn -Dtest=com.sndevops.eng.App1Test test'                     
                 }
@@ -59,15 +59,15 @@ pipeline {
          stages{
              stage('deploy UAT') {
                steps{
-                 snDevOpsStep ()
+                 //snDevOpsStep ()
                  echo "deploy in UAT"
                }
              }
             stage('deploy PROD') {
                 steps{
-                 snDevOpsStep ()
+                 //snDevOpsStep ()
                    echo "deploy in prod"
-			snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar2","repositoryName": "services-1131","version":"${artifactVersion}"}]}""")
+		//	snDevOpsPackage(name: "sentimentpackage", artifactsPayload: """{"artifacts": [{"name": "sa-web-ui.jar2","repositoryName": "services-1131","version":"${artifactVersion}"}]}""")
                  snDevOpsChange()              
                 }
             }
